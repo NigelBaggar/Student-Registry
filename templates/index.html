@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+  <input type="search" id="search-box" class="form-control" placeholder="Search student...">
+
+  <h1>Student List</h1>
+  <table class="table table-glow">
+    <tbody id="student-list">
+      {% for student in students %}
+        <tr>
+          <td>
+            <a href="/student/{{ student.id }}">
+              {{ student.name }} {{ student.surname }}
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    document.getElementById("search-box").addEventListener("keyup", function() {
+      let query = this.value;
+      fetch("/search?query=" + encodeURIComponent(query))
+        .then(response => response.json())
+        .then(data => {
+          let listBody = document.getElementById("student-list");
+          listBody.innerHTML = ""; // clear old rows
+          data.forEach(student => {
+            listBody.innerHTML += `
+              <tr>
+                <td>
+                  <a href="/student/${student.id}">
+                    ${student.name} ${student.surname}
+                  </a>
+                </td>
+              </tr>
+            `;
+          });
+        });
+    });
+  </script>
+{% endblock content %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ image_file }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ student.name }} {{ student.surname }}</h2>
+    </div>
+  </div>
+</div>
+
+<div class="card form-card mt-4">
+  <div class="card-header">
+    <h4>Update Student Information</h4>
+  </div>
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data" novalidate>
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+
+        <div class="form-group">
+          {{ form.name.label(class="form-control-label") }}
+          {% if form.name.errors %}
+            {{ form.name(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.name.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.name(class="form-control form-control-lg") }}
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          {{ form.surname.label(class="form-control-label") }}
+          {% if form.surname.errors %}
+            {{ form.surname(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.surname.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.surname(class="form-control form-control-lg") }}
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          {{ form.dob.label(class="form-control-label") }}
+          {% if form.dob.errors %}
+            {{ form.dob(class="form-control form-control-lg is-invalid", type="date") }}
+            <div class="invalid-feedback">
+              {% for error in form.dob.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.dob(class="form-control form-control-lg", type="date") }}
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          {{ form.class_name.label(class="form-control-label") }}
+          {% if form.class_name.errors %}
+            {{ form.class_name(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.class_name.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.class_name(class="form-control form-control-lg") }}
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          {{ form.phone.label(class="form-control-label") }}
+          {% if form.phone.errors %}
+            {{ form.phone(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.phone.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.phone(class="form-control form-control-lg") }}
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          {{ form.picture.label() }}
+          {{ form.picture(class="form-control-file") }}
+          {% if form.picture.errors %}
+              {% for error in form.picture.errors %}
+                  <span class="text-danger">{{ error }}</span></br>
+              {% endfor %}
+          {% endif %}
+        </div>
+      </fieldset>
+      <div class="form-group">
+          {% if form.errors %}
+              {{ form.submit(class="btn btn-success btn-block btn-error") }}
+          {% else %}
+              {{ form.submit(class="btn btn-success btn-block") }}
+         {% endif %}
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

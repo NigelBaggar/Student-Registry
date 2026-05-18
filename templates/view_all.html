@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Total Students: {{ student_count }}</h1>
+  <table class="table table-glow">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Class</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+        <tr>
+          <td>
+            <a href="/student/{{ student.id }}">
+              {{ student.name }}
+            </a>
+          </td>
+          <td>{{ student.surname }}</td>
+          <td>{{ student.class_name }}</td>
+          <td>{{ student.phone }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
