@@ -8,5 +8,6 @@ Pillow==12.2.0
 WTForms==3.2.1
 email-validator==2.3.0
 gunicorn==21.2.0
-psycopg[binary]==3.2.13
+psycopg[binary]==3.3.4
+
 python-dotenv==1.0.0
