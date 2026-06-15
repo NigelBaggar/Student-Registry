@@ -1,0 +1,13 @@
+# Python cache
+*.pyc
+__pycache__/
+
+# IDE settings
+.idea/
+
+# JSON data
+students.json
+
+# Other folders you don’t want
+migrations/
+instance/
