@@ -11,3 +11,8 @@ students.json
 # Other folders you don’t want
 migrations/
 instance/
+
+# Config and build files
+requirements.txt
+Procfile
+.python-version
